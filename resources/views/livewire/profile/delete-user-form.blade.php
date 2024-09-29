@@ -36,7 +36,7 @@ $deleteUser = function (Logout $logout) {
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
     >{{ __('Delete Account') }}</x-danger-button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
+    {{-- <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
         <form wire:submit="deleteUser" class="p-6">
 
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -72,5 +72,5 @@ $deleteUser = function (Logout $logout) {
                 </x-danger-button>
             </div>
         </form>
-    </x-modal>
+    </x-modal> --}}
 </section>

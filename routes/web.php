@@ -4,12 +4,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth'])->group(function () {
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    // products
+    Route::view('products', 'dashboard.products.products')
+        ->name('products');
 
-require __DIR__.'/auth.php';
+    Route::view('product/create', 'dashboard.products.create')
+    ->name('product.create');
+
+    Route::view('dashboard', 'dashboard')
+        ->name('dashboard');
+
+    Route::view('profile', 'profile')
+        ->name('profile');
+});
+
+
+require __DIR__ . '/auth.php';

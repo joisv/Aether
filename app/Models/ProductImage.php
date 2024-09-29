@@ -9,7 +9,12 @@ class ProductImage extends Model
 {
     use HasFactory;
 
-    public function prodcut()
+    protected $fillable = [
+        'product_id',
+        'image_path'
+    ];
+
+    public function product()
     {
         $this->belongsTo(Product::class);
     }
