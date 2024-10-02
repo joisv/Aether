@@ -83,7 +83,7 @@
                     {{-- <x-tables.td>{{ $product->category->name }}</x-tables.td> --}}
                     <x-tables.td>
                         <div class="flex space-x-1 items-center">
-                            <a wire:navigate>
+                            <a href="{{ route('product.edit', $product->id) }}" wire:navigate >
                                 <x-primary-button type="button">edit</x-primary-button>
                             </a>
                             <button type="button"

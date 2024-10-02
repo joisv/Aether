@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -12,6 +13,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('product/create', 'dashboard.products.create')
     ->name('product.create');
+    Route::get('product/edit/{product:id}', function(Product $product){
+
+        return view('dashboard.products.edit', [
+            'product' => $product->load(['category', 'product_images'])
+        ]);
+        
+    })->name('product.edit');
 
     Route::view('dashboard', 'dashboard')
         ->name('dashboard');

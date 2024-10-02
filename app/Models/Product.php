@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'description',
         'price',
         'stock',
@@ -29,7 +30,7 @@ class Product extends Model
 
     public function product_images()
     {
-        $this->hasMany(ProductImage::class);
+       return $this->hasMany(ProductImage::class);
     }
 
     public function shoppingCarts()

@@ -3,7 +3,6 @@
 namespace App\Livewire\Dashboard\Products;
 
 use App\Models\Category;
-use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\User;
 use App\Traits\setSlug;
@@ -12,14 +11,14 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
-use Livewire\Component;
 use Livewire\WithFileUploads;
 use Mary\Traits\Toast;
 use Mary\Traits\WithMediaSync;
+use App\Models\Product;
+use Livewire\Component;
 
-class Create extends Component
+class Edit extends Component
 {
-
     use setSlug, Toast, WithFileUploads, WithMediaSync;
 
     public string $name;
@@ -30,7 +29,6 @@ class Create extends Component
     public $categories;
     public int $stock;
     public int $price;
-    public bool $status = false;
     public bool $visible = true;
     public bool $showDrawer = false;
     public bool $myModal2 = false;
@@ -41,12 +39,14 @@ class Create extends Component
     public ?Collection $library;
     public ?User $user = null;
     
+    public Product $product;
+    
+
     public function submit()
     {
-        // dd($this->slug);
         $this->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'required|string|unique:products,slug',
+            'slug' > 'required|string|unique:products,slug',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0|max:99999999.99',
             'stock' => 'required|integer|min:0',
@@ -56,7 +56,6 @@ class Create extends Component
         
         $product = Product::create([
             'name' => $this->name,
-            'slug' => $this->slug,
             'description' => $this->description,
             'price' => $this->price,
             'stock' => $this->stock,
@@ -84,7 +83,7 @@ class Create extends Component
         );
         $this->redirectRoute    ('products');
     }
-
+    
     #[On('setSlug')]
     public function slugAttr()
     {
@@ -93,7 +92,7 @@ class Create extends Component
             $this->slug =  $this->sluggable;
         }
     }
-
+    
     public function search(string $value = '')
     {
         // Besides the search results, you must include on demand selected option
@@ -107,18 +106,25 @@ class Create extends Component
             ->merge($selectedOption);     // <-- Adds selected option
     }
     
-    public function mount()
-    {
+    
+    public function mount(Product $product) : void {
+
+        
+        $this->name = $product->name;
+        $this->slug = $product->slug;
+        $this->description = $product->description;
+        $this->date = $product->created_at;
+        $this->category_id = $product->category_id;
+        $this->stock = $product->stock;
+        $this->price = $product->price;
+        $this->visible = $product->visible;
+        $this->library = $product->product_images;
         $this->user = Auth::user();
-        // $this->library = $this->user->library;
-        $this->library = new Collection();
-        $this->search();
+        $this->categories = Category::all();
     }
     
     public function render()
     {
-        $this->date = Carbon::today();
-        $this->stock = 0; 
-        return view('livewire.dashboard.products.create');
+        return view('livewire.dashboard.products.edit');
     }
 }

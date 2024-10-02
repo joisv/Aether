@@ -28,7 +28,7 @@ $logout = function (Logout $logout) {
                     <x-menu-item title="analitycs" wire:navigate />
                 </x-menu-sub>
                 <x-menu-sub title="shops" icon="o-rectangle-group">
-                    <x-menu-item title="products"  wire:navigate :href="route('products')" :active="request()->routeIs('products') || request()->routeIs('product.create')"/>
+                    <x-menu-item title="products"  wire:navigate :href="route('products')" :active="request()->routeIs('products') || request()->routeIs('product.create') || request()->routeIs('product.edit')"/>
                     <x-menu-item title="categories"  wire:navigate />
                     <x-menu-item title="orders"  wire:navigate />
                 </x-menu-sub>

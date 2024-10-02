@@ -1,4 +1,5 @@
 <x-form wire:submit="submit">
+    {{ $library }}
     <x-button icon="c-cog-8-tooth" class="btn-square absolute top-20 right-1 btn-warning xl:hidden flex" @click="$wire.showDrawer = true" />
     <div class="flex space-x-4" >
         <div class="w-full xl:w-[70%] space-y-1 ">
@@ -10,9 +11,14 @@
                     <x-input label="Slug" error-field="slug" wire:model="slug" />
                 </div>
             </div>
-            <x-editor wire:model="description" error-field="description" label="Description"
+            {{-- <x-editor wire:model="description" error-field="description" label="Description" --}}
             hint="The full product description" />
-            <livewire:components.image-library />
+            <x-image-library
+                wire:model="files"                 
+                wire:library="library"           
+                :preview="$library"               
+                label="Product images"
+                hint="Max 100Kb" />
             <x-slot:actions>
                 <x-button label="Cancel" @click="() => {
                     Livewire.navigate('/products')

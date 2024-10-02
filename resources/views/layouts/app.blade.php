@@ -13,7 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    <script src="https://cdn.tiny.cloud/1/p775yy0b6wkpziedc6gen96mcuctzvbhkqb62voq4ckg3e8l/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    {{-- <script src="https://cdn.tiny.cloud/1/p775yy0b6wkpziedc6gen96mcuctzvbhkqb62voq4ckg3e8l/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> --}}
     {{-- Flatpickr  --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
