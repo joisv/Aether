@@ -6,8 +6,6 @@ use Illuminate\Support\Str;
 trait setSlug
 {
 
-    public string $sluggable;
-    
     public function setSlugAttribute($model, $name)
     {
         $slug = Str::slug($name);
@@ -19,6 +17,6 @@ trait setSlug
             $count++;
         }
 
-        $this->sluggable = $slug;
+        return $slug;
     }
 }

@@ -43,7 +43,6 @@ class Create extends Component
     
     public function submit()
     {
-        // dd($this->slug);
         $this->validate([
             'name' => 'required|string|max:255',
             'slug' => 'required|string|unique:products,slug',
@@ -56,7 +55,7 @@ class Create extends Component
         
         $product = Product::create([
             'name' => $this->name,
-            'slug' => $this->slug,
+            'slug' => $this->setSlugAttribute(Product::class, $this->slug),
             'description' => $this->description,
             'price' => $this->price,
             'stock' => $this->stock,
@@ -69,10 +68,10 @@ class Create extends Component
         foreach ($this->files as $key => $file) {
             ProductImage::create([
                 'product_id' => $product->id,
-                'image_path' => $file->store('product_image'),
+                'image_path' => $file->store(path:'product_image'),
             ]);
         }
-        $this->syncMedia($this->user); 
+        // $this->syncMedia($this->user); 
         
         $this->reset();
         $this->success(
@@ -82,15 +81,14 @@ class Create extends Component
             icon: 'o-heart',
             css: 'bg-primary text-base-100'
         );
-        $this->redirectRoute    ('products');
+        $this->redirectRoute('products');
     }
 
     #[On('setSlug')]
     public function slugAttr()
     {
         if (!empty($this->name)) {
-            $this->setSlugAttribute(Product::class, $this->name);
-            $this->slug =  $this->sluggable;
+            $this->slug = $this->setSlugAttribute(Product::class, $this->name);
         }
     }
 

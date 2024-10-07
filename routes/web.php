@@ -21,6 +21,10 @@ Route::middleware(['auth'])->group(function () {
         
     })->name('product.edit');
 
+    // categories
+    Route::view('categories', 'dashboard.categories.categories')
+    ->name('categories');
+    
     Route::view('dashboard', 'dashboard')
         ->name('dashboard');
 

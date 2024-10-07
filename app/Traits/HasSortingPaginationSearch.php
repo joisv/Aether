@@ -19,7 +19,7 @@ trait HasSortingPaginationSearch
     
     public function updatedSelectedAll($val)
     {
-        $val ? $this->mySelected = $this->getSeries()->limit($this->paginate)->pluck('id') : $this->mySelected = [];
+        $val ? $this->mySelected = $this->getData()->limit($this->paginate)->pluck('id') : $this->mySelected = [];
     }
     
     public function updatedMySelected()
