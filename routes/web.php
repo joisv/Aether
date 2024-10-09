@@ -30,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('profile', 'profile')
         ->name('profile');
+
+    Route::view('customers', 'dashboard.customers.customers')
+    ->name('customers');
 });
 
 

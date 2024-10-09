@@ -32,7 +32,7 @@ $logout = function (Logout $logout) {
                     <x-menu-item title="categories"  wire:navigate :href="route('categories')" :active="request()->routeIs('categories')"/>
                     <x-menu-item title="orders"  wire:navigate />
                 </x-menu-sub>
-                <x-menu-item title="customers" icon="s-user-group" />
+                <x-menu-item title="customers" icon="s-user-group" wire:navigate :href="route('customers')" :active="request()->routeIs('customers')"/>
                 <x-menu-sub title="blog" icon="o-document">
                     <x-menu-item title="posts" wire:navigate/>
                 </x-menu-sub>
