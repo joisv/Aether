@@ -1,5 +1,5 @@
 <div x-data="">
-    <x-tables.table name="Series" count="{{ $customers->count() }} Categories">
+    <x-tables.table name="Series" count="{{ $customers->count() }} Customers">
         <x-slot name="secondBtn">
             <button
                 class="flex items-center justify-center w-1/2 px-5 py-2 text-sm disabled:text-gray-700 transition-colors duration-200 disabled:bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700 bg-red-500 text-white"
@@ -9,7 +9,7 @@
         </x-slot>
         <x-slot name="addBtn">
             <x-tables.button type="button" x-data="" @click="$wire.modal_create = true">
-                Add Categories
+                Add Customers
             </x-tables.button>
         </x-slot>
         <x-slot name="sort">
@@ -69,7 +69,7 @@
                     {{-- <x-tables.td>{{ $category->category->name }}</x-tables.td> --}}
                     <x-tables.td>
                         <div class="flex space-x-1 items-center">
-                            <x-primary-button type="button" @click="$wire.editModal({{ $customer->id }})">edit</x-primary-button>
+                            <x-primary-button type="button" >edit</x-primary-button>
                             <button type="button"
                                 class="flex items-center justify-center w-1/2 px-5 py-2 text-sm disabled:text-gray-700 transition-colors duration-200 disabled:bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700 bg-red-500 text-white"
                                 wire:click="destroyAlert({{ $customer->id }})"
@@ -86,10 +86,10 @@
     <div class="w-full mt-5">
         {{ $customers->links() }}
     </div>
-    <x-modal wire:model="modal_create" title="Create category" subtitle="Create new unique category" separator>
-        <livewire:dashboard.categories.create />
+    <x-modal wire:model="modal_create" title="Create user" subtitle="add new user here" separator>
+        <livewire:dashboard.customers.create />
     </x-modal>
-    <x-modal wire:model="modal_edit" title="Edit category" subtitle="edit unique category" separator>
+    {{-- <x-modal wire:model="modal_edit" title="Edit category" subtitle="edit unique category" separator>
         <livewire:dashboard.categories.edit />
-    </x-modal>
+    </x-modal> --}}
 </div>

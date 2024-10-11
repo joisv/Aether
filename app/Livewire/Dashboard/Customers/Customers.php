@@ -12,6 +12,9 @@ class Customers extends Component
 {
 
     use HasSortingPaginationSearch, HasLivewireAlert;
+
+    public bool $modal_create = false;
+    public bool $modal_edit = false;
    
     public function getData()
     {
@@ -36,6 +39,13 @@ class Customers extends Component
     {
         $this->mySelected = $data['value'];
         $this->bulkDelete(User::class, 'Series deleted successfully');
+    }
+    
+    #[On('close')]
+    public function closeModal()
+    {
+        $this->modal_create = false;
+        $this->modal_edit = false;
     }
     
     public function render()
