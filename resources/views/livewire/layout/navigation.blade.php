@@ -37,7 +37,7 @@ $logout = function (Logout $logout) {
                     <x-menu-item title="posts" wire:navigate/>
                 </x-menu-sub>
                 <x-menu-sub title="settings" icon="c-cog-8-tooth">
-                    <x-menu-item title="basic" wire:navigate />
+                    <x-menu-item title="basic" wire:navigate  wire:navigate :href="route('basics')" :active="request()->routeIs('basics')"/>
                     <x-menu-item title="my account" wire:navigate />
                     <x-menu-item title="feedback" wire:navigate />
                 </x-menu-sub>

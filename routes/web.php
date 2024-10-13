@@ -33,6 +33,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::view('customers', 'dashboard.customers.customers')
     ->name('customers');
+
+    Route::view('basics', 'dashboard.settings.basics')->prefix('settings')->name('basics');
 });
 
 
