@@ -42,7 +42,6 @@ $logout = function (Logout $logout) {
                     <x-menu-item title="feedback" wire:navigate />
                 </x-menu-sub>
             </x-menu>
-
             <!-- Settings Dropdown -->
             {{-- <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -84,7 +83,7 @@ $logout = function (Logout $logout) {
             </div> --}}
         </div>
     </div>
-
+    
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
