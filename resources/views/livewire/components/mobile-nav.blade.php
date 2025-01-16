@@ -1,4 +1,5 @@
-<x-drawer wire:model="showDrawer1" class="w-11/12 lg:w-1/3">
-    <div>...</div>
-    <x-button label="Close" @click="$wire.showDrawer1 = false" />
-</x-drawer>
+<div x-data @showdrawer.window="$wire.showDrawer1 = true">
+    <x-drawer wire:model="showDrawer1" class="w-3/4 px-0">
+       <x-menus />
+    </x-drawer>
+</div>

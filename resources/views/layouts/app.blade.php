@@ -30,13 +30,19 @@
     <x-toast />
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex lg:space-x-4">
         <livewire:layout.navigation />
-
+        <livewire:components.mobile-nav />
+        
         <div class="w-full">
             <!-- Page Heading -->
             <header>
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
+                <div x-data class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
+                    <div class="flex lg:hidden">
+                        <x-button label="Open Left" @click="$dispatch('showdrawer')" />
+                    </div>
+                    <div class="lg:flex hidden">
+                        <x-theme-toggle/>
+                    </div>
                     {{ $header }}
-                    <x-theme-toggle />
                 </div>
             </header>
             {{-- @if (isset($header))

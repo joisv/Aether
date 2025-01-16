@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\On;
 
 trait HasLivewireAlert
 {
@@ -41,8 +40,7 @@ trait HasLivewireAlert
                 $this->selectedAll = false;
                 $this->alert('success', $message);
             } catch (\Throwable $th) {
-                dd($th);
-                // $this->alert('error', $th);
+                $this->alert('error', $th);
             }
         } else {
             $this->alert('error', 'No records selected');
